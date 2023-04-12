@@ -33,6 +33,12 @@ public class DepartmentRepository {
 		entityManager.merge(department);
 	}
 
+
+	@Transactional
+	public void delete(Department department) {
+		entityManager.remove(department);
+	}
+
 	public Department findById(Integer id) {
 		return entityManager.find(Department.class, id);
 	}

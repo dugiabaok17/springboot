@@ -16,4 +16,6 @@ public interface IDepartmentRepository {
 	ResponseEntity<ResponseObject> update(Integer id,Department department);
 	
 	ResponseEntity<ResponseObject> findById(Integer id);
+
+	ResponseEntity<ResponseObject> delete(Integer id);
 }

@@ -5,13 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.trainning.springboot.entity.Department;
 import com.example.trainning.springboot.entity.ResponseObject;
@@ -49,5 +43,10 @@ public class HelloController {
 	@PutMapping("/{id}")
 	public ResponseEntity<ResponseObject> updateDepartment( @PathVariable Integer id,@RequestBody Department department) {
 		return iDepartmentRepository.update(id,department);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ResponseObject> deleteDepartment( @PathVariable Integer id) {
+		return iDepartmentRepository.delete(id);
 	}
 }

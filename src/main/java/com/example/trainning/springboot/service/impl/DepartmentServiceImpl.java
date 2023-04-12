@@ -69,4 +69,18 @@ public class DepartmentServiceImpl implements IDepartmentRepository {
 				.body(new ResponseObject("failed", "Cannot find department with id = " + id, 0, ""));
 	}
 
+
+	@Override
+	public ResponseEntity<ResponseObject> delete(Integer id) {
+		Department department = departmentRepository.findById(id);
+		if (department != null) {
+			departmentRepository.delete(department);
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(new ResponseObject("ok", "Delete department successfully", 0, department));
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(new ResponseObject("ok", "Cannot find department with id = " + id, 0, ""));
+
+	}
+
 }
